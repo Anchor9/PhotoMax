@@ -31,9 +31,8 @@ namespace PhotoMax
             ExifLib.ExifReader reader = new ExifLib.ExifReader(path);
             Image file = Image.FromFile(path);
 
-            //Obtenemos height y width
-            Height = file.Height;
-            Width = file.Width;
+           
+           
             // obtenemos ISO
             int isos;
             object isos1;
@@ -78,7 +77,8 @@ namespace PhotoMax
             string Location = string.Format("{0}\n{1}", lat, lon);
 
             // SETTERS
-
+            Height = file.Height;
+            Width = file.Width;
             Iso = isos;
             FocalLength = (float)focal;
             ExposureTime = et;
