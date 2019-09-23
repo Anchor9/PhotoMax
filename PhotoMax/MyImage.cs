@@ -10,8 +10,9 @@ namespace PhotoMax
         private float focalLength;
         private string flash;
         private double exposureTime;
+        private double aperture;
         private DateTime dataTime;
-        private string cammeraModel;
+        private string cameraModel;
         private string artist;
         private string copyright;
         private string geotag;
@@ -56,7 +57,6 @@ namespace PhotoMax
             Make = maker;
 
             DateTime datatime;
-
             reader.GetTagValue(ExifTags.DateTime, out datatime);
 
             DataTime = datatime;
@@ -70,10 +70,20 @@ namespace PhotoMax
 
             Copyright = copy;
 
+            string camera;
+            reader.GetTagValue(ExifTags.Model, out camera);
+            CameraModel = camera;
 
+            double aperture;
+            reader.GetTagValue(ExifTags.ApertureValue, out aperture);
+            Aperture = aperture;
         }
 
-
+        public double Aperture
+        {
+            get => aperture;
+            set => aperture = value;
+        }
         public int Height
         {
             get => height;
@@ -113,10 +123,10 @@ namespace PhotoMax
             get => dataTime;
             set => dataTime = value;
         }
-        public string CammeraModel
+        public string CameraModel
         {
-            get => cammeraModel;
-            set => cammeraModel = value;
+            get => cameraModel;
+            set => cameraModel = value;
         }
         public string Artist
         {
