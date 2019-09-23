@@ -75,7 +75,7 @@ namespace PhotoMax
             CameraModel = camera;
 
             double aperture;
-            reader.GetTagValue(ExifTags.ApertureValue, out aperture);
+            reader.GetTagValue(ExifTags.FNumber, out aperture);
             Aperture = aperture;
         }
 

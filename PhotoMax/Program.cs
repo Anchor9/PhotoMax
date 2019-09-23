@@ -74,8 +74,12 @@ namespace PhotoMax
 
             double aperture;
 
-            reader.GetTagValue(ExifTags.ApertureValue, out aperture);
+            reader.GetTagValue(ExifTags.FNumber, out aperture);
             Console.WriteLine(aperture);
+
+            object gps;
+            reader.GetTagValue(ExifTags.GPSAltitude,out gps);
+            Console.WriteLine(gps);
 
         }
 
