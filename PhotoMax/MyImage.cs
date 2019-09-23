@@ -18,7 +18,6 @@ namespace PhotoMax
         private int rank;
         private string climate;
         private bool animal;
-        private string path;
         private int height;
         private int width;
         private string make;
@@ -61,6 +60,15 @@ namespace PhotoMax
             reader.GetTagValue(ExifTags.DateTime, out datatime);
 
             DataTime = datatime;
+
+            string artista;
+            reader.GetTagValue(ExifTags.Artist, out artista);
+            Artist = artista;
+
+            string copy;
+            reader.GetTagValue(ExifTags.Copyright, out copy);
+
+            Copyright = copy;
 
 
         }

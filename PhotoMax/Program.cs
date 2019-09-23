@@ -64,8 +64,13 @@ namespace PhotoMax
             reader.GetTagValue(ExifTags.Artist, out artist);
             Console.WriteLine(artist);
 
+            string copy;
+            reader.GetTagValue(ExifTags.Copyright, out copy);
+            Console.WriteLine(copy);
 
-
+            string camera;
+            reader.GetTagValue(ExifTags.Model, out camera);
+            Console.WriteLine(camera);
 
 
         }
