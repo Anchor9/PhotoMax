@@ -27,56 +27,54 @@ namespace PhotoMax
         {
             ExifReader reader = new ExifReader(path);
             Image file = Image.FromFile(path);
+
             //Obtenemos height y width
             Height = file.Height;
-
             Width = file.Width;
             // obtenemos ISO
             int isos;
             object isos1;
             reader.GetTagValue<object>(ExifTags.PhotographicSensitivity, out isos1);
             isos = (int)Convert.ToUInt64(isos1);
-
-            Iso = isos;
             //focal
             object fl;
             reader.GetTagValue<object>(ExifTags.FocalLength, out fl);
             double focal;
             focal = Convert.ToDouble(fl);
-
-            FocalLength = (float)focal;
-
             //exposure time
             double et;
             reader.GetTagValue(ExifTags.ExposureTime, out et);
-
-            ExposureTime = et;
-
+            //MAKER
             string maker;
             reader.GetTagValue(ExifTags.Make, out maker);
-            Make = maker;
-
+            // DATETIME
             DateTime datatime;
             reader.GetTagValue(ExifTags.DateTime, out datatime);
-
-            DataTime = datatime;
-
+            // Artist 
             string artista;
             reader.GetTagValue(ExifTags.Artist, out artista);
             Artist = artista;
-
+            //Copyright
             string copy;
             reader.GetTagValue(ExifTags.Copyright, out copy);
-
-            Copyright = copy;
-
+            //Camera  model
             string camera;
             reader.GetTagValue(ExifTags.Model, out camera);
             CameraModel = camera;
+            //Aperture
+            double apertures;
+            reader.GetTagValue(ExifTags.FNumber, out apertures);
 
-            double aperture;
-            reader.GetTagValue(ExifTags.FNumber, out aperture);
-            Aperture = aperture;
+
+            Iso = isos;
+            FocalLength = (float)focal;
+            ExposureTime = et;
+            Make = maker;
+            DataTime = datatime;
+            Artist = artista;
+            Copyright = copy;
+            CameraModel = camera;
+            Aperture = apertures;
         }
 
         public double Aperture
