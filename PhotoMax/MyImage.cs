@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using ExifLib;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
 
 namespace PhotoMax
 {
@@ -25,7 +28,7 @@ namespace PhotoMax
 
         public MyImage(string path)
         {
-            ExifReader reader = new ExifReader(path);
+            ExifLib.ExifReader reader = new ExifLib.ExifReader(path);
             Image file = Image.FromFile(path);
 
             //Obtenemos height y width
@@ -64,7 +67,18 @@ namespace PhotoMax
             //Aperture
             double apertures;
             reader.GetTagValue(ExifTags.FNumber, out apertures);
+            // GPS 
+            var gps = ImageMetadataReader.ReadMetadata(path)
+                              .OfType<GpsDirectory>()
+                              .FirstOrDefault();
 
+            var location = gps.GetGeoLocation();
+            
+            string lat = Convert.ToString(location.Latitude);
+            string lon = Convert.ToString(location.Longitude);
+            string Location = lat + " ," + lon;
+           
+            // SETTERS
 
             Iso = isos;
             FocalLength = (float)focal;
@@ -75,6 +89,7 @@ namespace PhotoMax
             Copyright = copy;
             CameraModel = camera;
             Aperture = apertures;
+            Geotag = Location;
         }
 
         public double Aperture

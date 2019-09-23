@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using ExifLib;
+using MetadataExtractor;
+using MetadataExtractor.Formats.Exif;
 
 namespace PhotoMax
 {
@@ -9,23 +12,11 @@ namespace PhotoMax
 
         static void Main(string[] args)
         {
-            //Image image1 = Image.FromFile("/Users/joaquinbarrientos/Projects/PruebasProyecto/PruebasProyecto/DSC_0528.JPG");
-            //ExifReader reader = new ExifReader("/Users/joaquinbarrientos/Projects/PruebasProyecto/PruebasProyecto/DSC_0528.JPG");
-
-
-            //DateTime dataTime;
-            //reader.GetTagValue<DateTime>(ExifTags.DateTime, out dataTime);
-
-            //object iso1;
-            //int iso;
-            //reader.GetTagValue<object>(ExifTags.PhotographicSensitivity, out iso1);
-            //iso = (int)Convert.ToUInt64(iso1);
-            //Console.WriteLine(is);
-            //Console.WriteLine(dataTime);
+           
 
             string path = "/Users/joaquinbarrientos/Desktop/Universidad/6.Sexto Semestre/POO/PhotoMax/PhotoMax/Pintua.jpg";
 
-            ExifReader reader = new ExifReader(path);
+            ExifLib.ExifReader reader = new ExifLib.ExifReader(path);
 
             //Obtenemos height y width
 
@@ -77,9 +68,11 @@ namespace PhotoMax
             reader.GetTagValue(ExifTags.FNumber, out aperture);
             Console.WriteLine(aperture);
 
-            object gps;
-            reader.GetTagValue(ExifTags.GPSAltitude,out gps);
-            Console.WriteLine(gps);
+            var gps = ImageMetadataReader.ReadMetadata(path)
+                              .OfType<GpsDirectory>()
+                              .FirstOrDefault();
+
+            
 
         }
 
