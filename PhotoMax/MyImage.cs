@@ -73,11 +73,10 @@ namespace PhotoMax
                               .FirstOrDefault();
 
             var location = gps.GetGeoLocation();
-            
-            string lat = Convert.ToString(location.Latitude);
-            string lon = Convert.ToString(location.Longitude);
-            string Location = lat + " ," + lon;
-           
+            double lat = location.Latitude;
+            double lon = location.Longitude;
+            string Location = string.Format("{0}\n{1}", lat, lon);
+
             // SETTERS
 
             Iso = isos;
