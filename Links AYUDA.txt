@@ -1,0 +1,18 @@
+-------HOW TO CREATE TAGS
+
+https://www.codeproject.com/Articles/170823/Facebook-Style-Photo-Tag
+
+
+
+-------COMO ESCRIBIR TEXTO
+
+https://www.codeproject.com/Articles/7462/Dynamically-Write-Text-On-An-Image
+
+
+-------LINK CON MULTIPLES COSAS (MOSAICOS Y OTRO)
+
+
+https://meet.google.com/linkredirect?authuser=0&dest=https%3A%2F%2Fonedrive.live.com%2F%3Fauthkey%3D%2521ADHI9oJ64i%252Dwsyg%26id%3DC6FDBF1F1FE1F985%2521143%26cid%3DC6FDBF1F1FE1F985
+
+
+--------
