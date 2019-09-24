@@ -31,8 +31,8 @@ namespace PhotoMax
             ExifLib.ExifReader reader = new ExifLib.ExifReader(path);
             Image file = Image.FromFile(path);
 
-           
-           
+
+
             // obtenemos ISO
             int isos;
             object isos1;
@@ -176,6 +176,6 @@ namespace PhotoMax
             set => make = value;
         }
 
-
+        FiltroSepia.
     }
 }

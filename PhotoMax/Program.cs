@@ -8,11 +8,11 @@ namespace PhotoMax
 {
     class Program
     {
-       
+
 
         static void Main(string[] args)
         {
-           
+
 
             string path = "/Users/joaquinbarrientos/Desktop/Universidad/6.Sexto Semestre/POO/PhotoMax/PhotoMax/hola.jpg";
 
@@ -21,7 +21,7 @@ namespace PhotoMax
             //Obtenemos height y width
 
             // obtenemos ISO
-            
+
 
             var gps = ImageMetadataReader.ReadMetadata(path)
                               .OfType<GpsDirectory>()
@@ -31,7 +31,7 @@ namespace PhotoMax
             double lat = location.Latitude;
             double lon = location.Longitude;
             string Location = string.Format("{0}\n{1}", lat, lon);
-            
+
             Console.WriteLine(Location);
         }
 
