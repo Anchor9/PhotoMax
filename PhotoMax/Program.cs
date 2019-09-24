@@ -24,7 +24,7 @@ namespace PhotoMax
 
             filtros.GreyScale(imageneditada);
             imageneditada.Save(newpath);
-
+            Console.WriteLine("trabajen");
         }
 
     }
