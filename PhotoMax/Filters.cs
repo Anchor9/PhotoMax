@@ -12,6 +12,7 @@ namespace PhotoMax
         public Filters()
         {
         }
+
         public void Sepia(Bitmap bitmap)
         {
             int ancho = bitmap.Width;
@@ -64,5 +65,7 @@ namespace PhotoMax
                 }
             }
         }
+
+
     }
 }

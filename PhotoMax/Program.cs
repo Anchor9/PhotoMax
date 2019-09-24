@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Linq;
 using ExifLib;
 using MetadataExtractor;
@@ -14,25 +15,16 @@ namespace PhotoMax
         {
 
 
-            string path = "/Users/joaquinbarrientos/Desktop/Universidad/6.Sexto Semestre/POO/PhotoMax/PhotoMax/hola.jpg";
+            string path = "/Users/joaquinbarrientos/Desktop/Universidad/6.Sexto Semestre/POO/PhotoMax/PhotoMax/Pintua.jpg";
+            string newpath = "/Users/joaquinbarrientos/Desktop/Universidad/6.Sexto Semestre/POO/PhotoMax/PhotoMax/PEPE.jpg";
+            Filters filtros = new Filters();
 
-            ExifLib.ExifReader reader = new ExifLib.ExifReader(path);
+            Bitmap imagenreal = new Bitmap(path);
+            Bitmap imageneditada = new Bitmap(path);
 
-            //Obtenemos height y width
+            filtros.GreyScale(imageneditada);
+            imageneditada.Save(newpath);
 
-            // obtenemos ISO
-
-
-            var gps = ImageMetadataReader.ReadMetadata(path)
-                              .OfType<GpsDirectory>()
-                              .FirstOrDefault();
-            var location = gps.GetGeoLocation();
-
-            double lat = location.Latitude;
-            double lon = location.Longitude;
-            string Location = string.Format("{0}\n{1}", lat, lon);
-
-            Console.WriteLine(Location);
         }
 
     }

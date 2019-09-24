@@ -67,14 +67,26 @@ namespace PhotoMax
             double apertures;
             reader.GetTagValue(ExifTags.FNumber, out apertures);
             // GPS 
+
             var gps = ImageMetadataReader.ReadMetadata(path)
                               .OfType<GpsDirectory>()
                               .FirstOrDefault();
+            if (gps != null)
+            {
+                var location = gps.GetGeoLocation();
+                double lat = location.Latitude;
+                double lon = location.Longitude;
+                string Location = string.Format("{0}\n{1}", lat, lon);
+                Geotag = Location;
+            }
+            else
+            {
+                Geotag = null;
+            }
 
-            var location = gps.GetGeoLocation();
-            double lat = location.Latitude;
-            double lon = location.Longitude;
-            string Location = string.Format("{0}\n{1}", lat, lon);
+
+
+
 
             // SETTERS
             Height = file.Height;
@@ -88,7 +100,7 @@ namespace PhotoMax
             Copyright = copy;
             CameraModel = camera;
             Aperture = apertures;
-            Geotag = Location;
+           
         }
 
         public double Aperture
@@ -176,6 +188,6 @@ namespace PhotoMax
             set => make = value;
         }
 
-        FiltroSepia.
+        
     }
 }
